@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <string>
-#define logMessage(x, y) Logger::getInstance()->logMsg(x, y)
+//#define logMessage(x, y) Logger::getInstance()->logMsg(x, y)
 using namespace std;
 
 enum eLogTypes {

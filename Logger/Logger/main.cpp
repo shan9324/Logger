@@ -8,12 +8,6 @@ int main()
     Logger* loggerObj = Logger::getInstance();
     loggerObj->setLogLevel(eALL);
 
-    // logMessage(eERROR, "Something is not right. Reboot your computer...");
-    // logMessage(eINFO, "Your computer is running fine...");
-    // logMessage(eDEBUG, "Your battery adapter is not compatible...");
-    // logMessage(eTRACE, "Your battery wattage is 65Wh. Required limit is 40Wh");
-    // logMessage(eALL, "Your computer's user name is Robinhood!!");
-
     string str1 = "Something is not right. Reboot your computer...";
     string str2 = "Your computer is running fine...";
     string str3 = "Your battery adapter is not compatible...";
@@ -21,10 +15,16 @@ int main()
     string str5 = "Your computer's user name is Robinhood!!";
 
     loggerObj->setLogLevel(eDEBUG);
-    logMessage(eERROR, str1);
-    logMessage(eINFO, str2);
-    logMessage(eDEBUG, str3);
-    logMessage(eTRACE, str4);
-    logMessage(eALL, str5);
+    loggerObj->logMsg(eERROR, str1);
+    loggerObj->logMsg(eINFO, str2);
+    loggerObj->logMsg(eDEBUG, str3);
+    loggerObj->logMsg(eTRACE, str4);
+    loggerObj->logMsg(eALL, str5);
+
+    loggerObj->logMsg(eERROR, "Cannot reboot your machine...");
+    loggerObj->logMsg(eINFO, "Your computer's virus free");
+    loggerObj->logMsg(eDEBUG, "memory cache corrupted...");
+    loggerObj->logMsg(eTRACE, "Data layer : Service Layer communication failure");
+    loggerObj->logMsg(eALL, "Ideas are bulletproof!!");
 	return 0;
 }

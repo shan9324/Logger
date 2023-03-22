@@ -83,31 +83,31 @@ void Logger::logMsg(eLogTypes eLogType, const char* text)
         if (m_iLogLevel >= eERROR)
             error(text);
         else
-            cout << "Reset Log Level" << endl;
+            cout << "Can't print eERROR - Current Log Level = "<< this->m_iLogLevel << endl;
         break;
     case eINFO:
         if (m_iLogLevel >= eINFO)
             info(text);
         else
-            cout << "Reset Log Level" << endl;
+            cout << "Can't print eINFO - Current Log Level = " << this->m_iLogLevel << endl;
         break;
     case eDEBUG:
         if (m_iLogLevel >= eDEBUG)
             debug(text);
         else
-            cout << "Reset Log Level" << endl;
+            cout << "Can't print eDEBUG - Current Log Level = " << this->m_iLogLevel << endl;
         break;
     case eTRACE:
         if (m_iLogLevel >= eTRACE)
             trace(text);
         else
-            cout << "Reset Log Level" << endl;
+            cout << "Can't print eTRACE - Current Log Level = " << this->m_iLogLevel << endl;
         break;
     case eALL:
         if (m_iLogLevel >= eALL)
             all(text);
         else
-            cout << "Reset Log Level" << endl;
+            cout << "Can't print eALL - Current Log Level = " << this->m_iLogLevel << endl;
         break;
     default:
         cout << "Log Level Not defined - Unable to Log the message!!\n";

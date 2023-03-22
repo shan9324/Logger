@@ -19,15 +19,15 @@ namespace nLogging
 {
     class Logger
     {
+
+    private:
         static Logger* m_loggerObj;
         eLogTypes m_iLogLevel = eERROR;
         Logger() {}
         Logger(const Logger& loggerObj) {}
         void operator=(const Logger& loggerObj) {}
-
     public:
         static Logger* getInstance();
-        void getSuccessMsg();
         void error(const char* text);
         void error(string str);
         void info(const char* text);

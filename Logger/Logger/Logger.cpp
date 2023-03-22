@@ -12,16 +12,14 @@ Logger* Logger::getInstance()
         m_loggerObj = new Logger;
     }
 
-    return m_loggerObj;
-}
-void Logger::getSuccessMsg()
-{
     if (m_loggerObj)
         cout << "Object Created Successfully" << endl;
     else
         cout << "Object NOT Created!!" << endl;
-    return;
+
+    return m_loggerObj;
 }
+
 void Logger::error(const char* text)
 {
     string str;

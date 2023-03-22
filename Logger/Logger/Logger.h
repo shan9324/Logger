@@ -4,10 +4,10 @@
 
 #include <iostream>
 #include <string>
-//#define logMessage(x, y) Logger::getInstance()->logMsg(x, y)
+
 using namespace std;
 
-enum eLogTypes {
+enum class eLogTypes : std::uint32_t {
     eERROR = 0,
     eINFO,
     eDEBUG,
@@ -22,7 +22,7 @@ namespace nLogging
 
     private:
         static Logger* m_loggerObj;
-        eLogTypes m_iLogLevel = eERROR;
+        eLogTypes m_iLogLevel = eLogTypes::eERROR;
         Logger() {}
         Logger(const Logger& loggerObj) {}
         void operator=(const Logger& loggerObj) {}

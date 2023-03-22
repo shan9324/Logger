@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Logger.h"
-using namespace std;
 using namespace nLogging;
 
 
@@ -13,65 +12,65 @@ Logger* Logger::getInstance()
     }
 
     if (m_loggerObj)
-        cout << "Object Created Successfully" << endl;
+        std::cout << "Object Created Successfully" << std::endl;
     else
-        cout << "Object NOT Created!!" << endl;
+        std::cout << "Object NOT Created!!" << std::endl;
 
     return m_loggerObj;
 }
 
 void Logger::error(const char* text)
 {
-    string str;
+    std::string str;
     str.append("[ERROR]: ");
     str.append(text);
-    cout << str << endl;
+    std::cout << str << std::endl;
 }
-void Logger::error(string str)
+void Logger::error(std::string str)
 {
     error(str.data());
 }
 void Logger::info(const char* text)
 {
-    string str;
+    std::string str;
     str.append("[INFO]: ");
     str.append(text);
-    cout << str << endl;
+    std::cout << str << std::endl;
 }
-void Logger::info(string str)
+void Logger::info(std::string str)
 {
     info(str.data());
 }
 void Logger::debug(const char* text)
 {
-    string str;
+    std::string str;
     str.append("[DEBUG]: ");
     str.append(text);
-    cout << str << endl;
+    std::cout << str << std::endl;
 }
-void Logger::debug(string str)
+void Logger::debug(std::string str)
 {
     debug(str.data());
 }
 void Logger::trace(const char* text)
 {
-    string str;
+    std::string str;
     str.append("[TRACE]: ");
     str.append(text);
-    cout << str << endl;
+    std::cout << str << std::endl;
 }
-void Logger::trace(string str)
+void Logger::trace(std::string str)
 {
     trace(str.data());
 }
 void Logger::all(const char* text)
 {
-    string str;
+    std::string str;
     str.append("[ALL]: ");
     str.append(text);
-    cout << str << endl;
+    std::cout << str << std::endl;
 }
-void Logger::all(string str)
+void Logger::all(std::string str)
 {
     all(str.data());
 }
@@ -79,42 +78,42 @@ void Logger::logMsg(eLogTypes eLogType, const char* text)
 {
     switch (eLogType)
     {
-    case eERROR:
-        if (m_iLogLevel >= eERROR)
+    case eLogTypes::eERROR:
+        if (m_iLogLevel >= eLogTypes::eERROR)
             error(text);
         else
-            cout << "Can't print eERROR - Current Log Level = "<< this->m_iLogLevel << endl;
+            std::cout << "Can't print eERROR - Current Log Level = "<< static_cast<int>(this->m_iLogLevel) << std::endl;
         break;
-    case eINFO:
-        if (m_iLogLevel >= eINFO)
+    case eLogTypes::eINFO:
+        if (m_iLogLevel >= eLogTypes::eINFO)
             info(text);
         else
-            cout << "Can't print eINFO - Current Log Level = " << this->m_iLogLevel << endl;
+            std::cout << "Can't print eINFO - Current Log Level = " << static_cast<int>(this->m_iLogLevel) << std::endl;
         break;
-    case eDEBUG:
-        if (m_iLogLevel >= eDEBUG)
+    case eLogTypes::eDEBUG:
+        if (m_iLogLevel >= eLogTypes::eDEBUG)
             debug(text);
         else
-            cout << "Can't print eDEBUG - Current Log Level = " << this->m_iLogLevel << endl;
+            std::cout << "Can't print eDEBUG - Current Log Level = " << static_cast<int>(this->m_iLogLevel) << std::endl;
         break;
-    case eTRACE:
-        if (m_iLogLevel >= eTRACE)
+    case eLogTypes::eTRACE:
+        if (m_iLogLevel >= eLogTypes::eTRACE)
             trace(text);
         else
-            cout << "Can't print eTRACE - Current Log Level = " << this->m_iLogLevel << endl;
+            std::cout << "Can't print eTRACE - Current Log Level = " << static_cast<int>(this->m_iLogLevel) << std::endl;
         break;
-    case eALL:
-        if (m_iLogLevel >= eALL)
+    case eLogTypes::eALL:
+        if (m_iLogLevel >= eLogTypes::eALL)
             all(text);
         else
-            cout << "Can't print eALL - Current Log Level = " << this->m_iLogLevel << endl;
+            std::cout << "Can't print eALL - Current Log Level = " << static_cast<int>(this->m_iLogLevel) << std::endl;
         break;
     default:
-        cout << "Log Level Not defined - Unable to Log the message!!\n";
+        std::cout << "Log Level Not defined - Unable to Log the message!!\n";
         break;
     }
 }
-void Logger::logMsg(eLogTypes eLogType, string str)
+void Logger::logMsg(eLogTypes eLogType, std::string str)
 {
     logMsg(eLogType, str.data());
 }

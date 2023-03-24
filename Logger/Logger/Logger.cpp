@@ -3,10 +3,19 @@
 using namespace nLogging;
 
 
-Logger* Logger::m_loggerObj = NULL;
-Logger* Logger::getInstance()
+//Logger* Logger::m_loggerObj = NULL;
+std::shared_ptr<Logger> Logger::m_loggerObj = nullptr;
+std::once_flag Logger::initFlag;
+//Logger* Logger::getInstance()
+Logger& Logger::getInstance()
 {
-    if (!m_loggerObj)
+    std::call_once(initFlag, []() {
+            m_loggerObj.reset(new Logger());
+        }
+    );
+
+    return *m_loggerObj;
+    /*if (!m_loggerObj)
     {
         m_loggerObj = new Logger;
     }
@@ -15,8 +24,9 @@ Logger* Logger::getInstance()
         std::cout << "Object Created Successfully" << std::endl;
     else
         std::cout << "Object NOT Created!!" << std::endl;
-
+    
     return m_loggerObj;
+    */
 }
 
 void Logger::error(const char* text)
@@ -119,5 +129,5 @@ void Logger::logMsg(eLogTypes eLogType, std::string str)
 }
 void Logger::setLogLevel(eLogTypes eLogLevel)
 {
-    m_iLogLevel = eLogLevel;
+    this->m_iLogLevel = eLogLevel;
 }

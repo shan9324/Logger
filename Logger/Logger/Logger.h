@@ -3,6 +3,8 @@
 #define _LOGGER_H_
 #include <iostream>
 #include <string>
+#include <memory>
+#include <mutex>
 
 enum class eLogTypes : std::uint32_t {
     eERROR = 0,
@@ -18,7 +20,9 @@ namespace nLogging
     {
 
     private:
-        static Logger* m_loggerObj;
+        //static Logger* m_loggerObj;
+        static std::shared_ptr<Logger> m_loggerObj;
+        static std::once_flag initFlag;
         eLogTypes m_iLogLevel = eLogTypes::eERROR;
         Logger() {}
         Logger(const Logger& loggerObj) {}
@@ -36,7 +40,8 @@ namespace nLogging
         void all(const char* text);
         void all(std::string str);
     public:
-        static Logger* getInstance();
+        //static Logger* getInstance();
+        static Logger& getInstance();
         void logMsg(eLogTypes eLogType, const char* text);
         void logMsg(eLogTypes eLogType, std::string str);
         void setLogLevel(eLogTypes eLogLevel);

@@ -3,10 +3,8 @@
 using namespace nLogging;
 
 
-//Logger* Logger::m_loggerObj = NULL;
 std::shared_ptr<Logger> Logger::m_loggerObj = nullptr;
 std::once_flag Logger::initFlag;
-//Logger* Logger::getInstance()
 Logger& Logger::getInstance()
 {
     std::call_once(initFlag, []() {
@@ -15,18 +13,6 @@ Logger& Logger::getInstance()
     );
 
     return *m_loggerObj;
-    /*if (!m_loggerObj)
-    {
-        m_loggerObj = new Logger;
-    }
-
-    if (m_loggerObj)
-        std::cout << "Object Created Successfully" << std::endl;
-    else
-        std::cout << "Object NOT Created!!" << std::endl;
-    
-    return m_loggerObj;
-    */
 }
 
 void Logger::error(const char* text)

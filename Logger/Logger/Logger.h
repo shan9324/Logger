@@ -20,7 +20,6 @@ namespace nLogging
     {
 
     private:
-        //static Logger* m_loggerObj;
         static std::shared_ptr<Logger> m_loggerObj;
         static std::once_flag initFlag;
         eLogTypes m_iLogLevel = eLogTypes::eERROR;
@@ -28,7 +27,6 @@ namespace nLogging
         Logger(const Logger& loggerObj) {}
         void operator=(const Logger& loggerObj) {}
         
-        //Private Methods - To be called from within the class only
         void error(const char* text);
         void error(std::string str);
         void info(const char* text);
@@ -40,7 +38,6 @@ namespace nLogging
         void all(const char* text);
         void all(std::string str);
     public:
-        //static Logger* getInstance();
         static Logger& getInstance();
         void logMsg(eLogTypes eLogType, const char* text);
         void logMsg(eLogTypes eLogType, std::string str);

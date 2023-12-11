@@ -30,7 +30,7 @@ int main() {
         if (j==50){ 
             // Change the log level - This change will reflect in other threads as well
             SETLOGLEVEL(LOGINFO);
-            LOG(LOGINFO, "LogLevel changed to", static_cast<int>(LOGTRACE));
+            LOG(LOGINFO, "LogLevel changed to", static_cast<int>(LOGINFO));
         }
         LOG(LOGDEBUG, "This is a DEBUG message.");
         LOG(LOGTRACE, "This is a TRACE  message.");
